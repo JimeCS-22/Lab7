@@ -12,11 +12,16 @@ public class LinkedQueues implements Queues{
         this.counter = counter;
     }
 
+    public LinkedQueues() {
+    }
+
     @Override
-    public int size() throws QueuesException {
+    public int size() throws QueueException {
 
         if (isEmpty()){
-            throw new QueuesException("Linked queues is empty");
+
+            throw new QueueException("Array queue is empty");
+
         }
         return counter;
     }
@@ -33,93 +38,108 @@ public class LinkedQueues implements Queues{
     public boolean isEmpty() {
 
         return counter == 0 && front==null && rear == null;
+
     }
 
     @Override
-    public Object indexOf() throws QueuesException {
-        return null;
-    }
-
-
-    @Override
-    public Object deQueue(Object element) throws QueuesException {
-
-        int result;
-
-        if (isEmpty()){
-            throw new QueuesException("Linked queues is Empty");
-        }
-        result = (int) front.data;
-        front = front.next;
-        counter--;
-
-        return result;
+    public int indexOf(Object element) throws QueueException {
+        return 0;
     }
 
     @Override
-    public Object enQueue(Object element) throws QueuesException {
+    public void enQueue(Object element) throws QueueException {
 
         Node newNode = new Node(element);
 
         if (isEmpty()){
-            throw new QueuesException("Linked queues is empty");
+            throw new QueueException("Linked queues is empty");
         }
         newNode.next = rear;
         rear = newNode;
         counter ++;
 
 
-        return element;
     }
 
-
     @Override
-    public boolean cointains(Object element) throws QueuesException {
+    public Object deQueue() throws QueueException {
 
-        boolean result = false;
-        Node data = new Node();
+        int result;
 
         if (isEmpty()){
-            throw new QueuesException("Linked queue is Empty");
+            throw new QueueException("Linked queues is Empty");
         }
-
-
-        LinkedQueues aux = new LinkedQueues(data);
-
-        while (!isEmpty()){
-
-            aux.enQueue(peek());
-
-            if (aux.data == element){
-                result = true;
-            }
-        }
-
-        while (!aux.isEmpty()){
-
-            enQueue(aux.peek());
-
-        }
+        result = (int) front.data;
+        front = front.next;
+        counter--;
 
         return result;
 
     }
 
     @Override
-    public int peek() throws QueuesException {
+    public boolean contains(Object element) throws QueueException {
+
+        boolean result = false;
+        Node data = new Node();
+
         if (isEmpty()){
-            throw new QueuesException("Linked queues is empty");
+            throw new QueueException("Linked queue is Empty");
         }
 
-        return (int) front.data;
+
+        LinkedQueues aux = new LinkedQueues();
+
+        while (!isEmpty()){
+
+            aux.enQueue(deQueue());
+
+            if (aux.rear == element){
+                result = true;
+            }
+        }
+
+        while (!aux.isEmpty()){
+
+            enQueue(deQueue());
+
+        }
+
+        return result;
     }
 
     @Override
-    public int front() throws QueuesException {
+    public Object peek() throws QueueException {
+
         if (isEmpty()){
-            throw new QueuesException("Linked queues is empty");
+            throw new QueueException("Linked queues is empty");
         }
 
-        return (int) front.data;
+        return front.data;
+
+
+    }
+
+    @Override
+    public Object front() throws QueueException {
+
+        return peek();
+
+    }
+
+    public static boolean isBalanced(String expression) throws QueueException {
+        LinkedQueues cola = new LinkedQueues();
+
+        for (char character : expression.toCharArray()) {
+            if (character == '(') {
+                cola.enQueue(character);
+            } else if (character == ')') {
+                if (cola.isEmpty()) {
+                    return false; // Closing without an opening
+                }
+                cola.deQueue(); // Match found, remove the opening
+            }
+        }
+        return cola.isEmpty(); // Should be empty if all opened are closed
     }
 }

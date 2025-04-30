@@ -8,7 +8,7 @@ import javafx.scene.control.Label;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.text.Text;
-import ucr.lab6.HelloApplication;
+import ucr.lab7.HelloApplication;
 
 import java.io.IOException;
 
