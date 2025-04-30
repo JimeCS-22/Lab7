@@ -37,7 +37,7 @@ public abstract class ArrayQueue implements Queues{
     }
 
     @Override
-    public Object enQueue(Object element) throws QueuesException {
+    public void enQueue(Object element) throws QueuesException {
 
         if(size()==queue.length){
 
@@ -50,8 +50,6 @@ public abstract class ArrayQueue implements Queues{
         }
         queue[rear] = element;
         front--;
-
-        return queue;
 
     }
 
@@ -66,8 +64,9 @@ public abstract class ArrayQueue implements Queues{
     }
 
     @Override
-    public void cointains(Object element) throws QueuesException {
+    public boolean cointains(Object element) throws QueuesException {
 
+        return false;
     }
 
     @Override

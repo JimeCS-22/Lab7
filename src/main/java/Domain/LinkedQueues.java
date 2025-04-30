@@ -32,8 +32,7 @@ public class LinkedQueues implements Queues{
     @Override
     public boolean isEmpty() {
 
-
-        return true;
+        return counter == 0 && front==null && rear == null;
     }
 
     @Override
@@ -41,14 +40,20 @@ public class LinkedQueues implements Queues{
         return null;
     }
 
-    @Override
-    public Object enQueue(Object element) throws QueuesException {
-        return null;
-    }
 
     @Override
     public Object deQueue(Object element) throws QueuesException {
-        return null;
+
+        int result;
+
+        if (isEmpty()){
+            throw new QueuesException("Linked queues is Empty");
+        }
+        result = (int) front.data;
+        front = front.next;
+        counter--;
+
+        return result;
     }
 
     @Override
@@ -64,25 +69,39 @@ public class LinkedQueues implements Queues{
         counter ++;
 
 
+        return element;
     }
 
+
     @Override
-    public Object deQueue() throws QueuesException {
-        int result;
+    public boolean cointains(Object element) throws QueuesException {
+
+        boolean result = false;
+        Node data = new Node();
 
         if (isEmpty()){
-            throw new QueuesException("Linked queues is Empty");
+            throw new QueuesException("Linked queue is Empty");
         }
-        result = (int) front.data;
-        front = front.data;
-        counter--;
+
+
+        LinkedQueues aux = new LinkedQueues(data);
+
+        while (!isEmpty()){
+
+            aux.enQueue(peek());
+
+            if (aux.data == element){
+                result = true;
+            }
+        }
+
+        while (!aux.isEmpty()){
+
+            enQueue(aux.peek());
+
+        }
 
         return result;
-
-    }
-
-    @Override
-    public void cointains(Object element) throws QueuesException {
 
     }
 

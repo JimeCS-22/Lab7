@@ -8,12 +8,7 @@ public interface Queues {
     public Object indexOf() throws QueuesException; // devuelve el elemento del tope de la pila
     public Object enQueue(Object element) throws QueuesException; // devuelve el elemento del tope de la pila
     public Object deQueue(Object element) throws QueuesException; // apila un elemento en el tope de la pila
-
-    Object enQueue() throws QueuesException;
-
-    Object deQueue() throws QueuesException;
-
-    public void cointains(Object element) throws QueuesException;//desapila el elemento del tope de la pila y lo retorna
+    public boolean cointains(Object element) throws QueuesException;//desapila el elemento del tope de la pila y lo retorna
     public int peek () throws QueuesException;
     public int front() throws QueuesException;
 
