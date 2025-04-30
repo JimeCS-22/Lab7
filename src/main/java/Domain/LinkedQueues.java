@@ -12,6 +12,10 @@ public class LinkedQueues implements Queues{
         this.counter = counter;
     }
 
+    public LinkedQueues() {
+
+    }
+
     @Override
     public int size() throws QueuesException {
 
@@ -36,13 +40,17 @@ public class LinkedQueues implements Queues{
     }
 
     @Override
+    public int indexOf(Object element) throws QueuesException {
+        return 0;
+    }
+
+
     public Object indexOf() throws QueuesException {
         return null;
     }
 
-
     @Override
-    public Object deQueue(Object element) throws QueuesException {
+     public Object deQueue() throws QueuesException {
 
         int result;
 
@@ -57,7 +65,7 @@ public class LinkedQueues implements Queues{
     }
 
     @Override
-    public Object enQueue(Object element) throws QueuesException {
+    public void enQueue(Object element) throws QueuesException {
 
         Node newNode = new Node(element);
 
@@ -68,13 +76,11 @@ public class LinkedQueues implements Queues{
         rear = newNode;
         counter ++;
 
-
-        return element;
     }
 
 
     @Override
-    public boolean cointains(Object element) throws QueuesException {
+      public boolean contains(Object element) throws QueuesException {
 
         boolean result = false;
         Node data = new Node();
@@ -84,20 +90,20 @@ public class LinkedQueues implements Queues{
         }
 
 
-        LinkedQueues aux = new LinkedQueues(data);
+        LinkedQueues aux = new LinkedQueues();
 
         while (!isEmpty()){
 
-            aux.enQueue(peek());
+            aux.enQueue(deQueue());
 
-            if (aux.data == element){
+            if (aux.rear == element){
                 result = true;
             }
         }
 
         while (!aux.isEmpty()){
 
-            enQueue(aux.peek());
+            enQueue(deQueue());
 
         }
 
@@ -106,20 +112,16 @@ public class LinkedQueues implements Queues{
     }
 
     @Override
-    public int peek() throws QueuesException {
+    public Object peek() throws QueuesException {
         if (isEmpty()){
             throw new QueuesException("Linked queues is empty");
         }
 
-        return (int) front.data;
+        return front.data;
     }
 
     @Override
-    public int front() throws QueuesException {
-        if (isEmpty()){
-            throw new QueuesException("Linked queues is empty");
-        }
-
-        return (int) front.data;
+    public Object front() throws QueuesException {
+      return peek();
     }
 }

@@ -31,9 +31,32 @@ public abstract class ArrayQueue implements Queues{
         return front == rear;
     }
 
+    //Este hay que revisarlo, no creo que esté bien
     @Override
-    public Object indexOf() throws QueuesException {
-        return null;
+    public int indexOf(Object element) throws QueuesException {
+        if (isEmpty()) {
+            throw new QueuesException("Array queue is empty");
+        }
+
+        int index = -1;
+        int currentIndex = 0;
+        int originalSize = size();
+
+        // Simulate iteration by cycling through the queue
+        while (currentIndex < originalSize) {
+            Object currentElement = deQueue();
+            enQueue(currentElement); // Cycle to the back
+
+            if ((element == null && currentElement == null) || (element != null && element.equals(currentElement))) {
+                index = currentIndex;
+                break; // Found the first occurrence, we can stop cycling
+            }
+            currentIndex++;
+        }
+
+        // After the loop, the queue's front has moved.
+
+        return index;
     }
 
     @Override
@@ -54,7 +77,7 @@ public abstract class ArrayQueue implements Queues{
     }
 
     @Override
-    public Object deQueue(Object element) throws QueuesException {
+    public Object deQueue() throws QueuesException {
         if (isEmpty()){
             throw new QueuesException("Array queue is Empty");
 
@@ -64,29 +87,23 @@ public abstract class ArrayQueue implements Queues{
     }
 
     @Override
-    public boolean cointains(Object element) throws QueuesException {
+    public boolean contains(Object element) throws QueuesException {
 
         return false;
     }
 
     @Override
-    public int peek() throws QueuesException {
+    public Object peek() throws QueuesException {
 
         if (isEmpty()){
 
             throw new QueuesException("Array queue is empty");
         }
-        return (int) queue[front+1];
+        return queue[front+1];
     }
 
     @Override
-    public int front() throws QueuesException {
-
-        if (isEmpty()){
-
-            throw new QueuesException("Array queue is empty");
-        }
-
-        return (int) queue[front+1];
+    public Object front() throws QueuesException {
+        return peek();
     }
 }
