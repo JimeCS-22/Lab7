@@ -124,4 +124,21 @@ public class LinkedQueues implements Queues{
     public Object front() throws QueuesException {
       return peek();
     }
+
+    public static boolean isBalanced(String expression) throws QueuesException {
+        LinkedQueues cola = new LinkedQueues();
+
+        for (char character : expression.toCharArray()) {
+            if (character == '(') {
+                cola.enQueue(character);
+            } else if (character == ')') {
+                if (cola.isEmpty()) {
+                    return false; // Closing without an opening
+                }
+                cola.deQueue(); // Match found, remove the opening
+            }
+        }
+        return cola.isEmpty(); // Should be empty if all opened are closed
+    }
+
 }
