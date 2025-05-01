@@ -21,6 +21,7 @@ class HeaderLinkedQueuesTest {
         }
     }
 
+    @Test
     void test2() {
         HeaderLinkedQueue headerLinkedQueue = new HeaderLinkedQueue();
         try {
