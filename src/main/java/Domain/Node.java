@@ -3,7 +3,8 @@ package Domain;
 public class Node {
     public Object data;
     public Node prev; //apuntador al nodo anterior
-    public Node next; //apuntador al nodo siguiente
+    public Node next;//apuntador al nodo siguiente
+    public int priority; // 1 = low , 2= mediada y 3 = alta
 
     //Constructor 1
     public Node(Object data) {
@@ -13,7 +14,14 @@ public class Node {
 
     //Constructor 2
     public Node() {
-        this.prev = this.next = null;
+         this.next = null;
     }
 
+    //Constructor 3
+    public Node( Object element , int priority) {
+
+        this.data = element;
+        this.next = null;
+        this.priority = priority;
+    }
 }

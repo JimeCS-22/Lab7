@@ -1,8 +1,9 @@
 package util;
 
-import domain.LinkedListStack;
-import domain.ArraysStack;
-import domain.StackException;
+import Domain.QueueException;
+//import domain.LinkedListStack;
+//import domain.ArraysStack;
+//import domain.StackException;
 
 import java.text.DecimalFormat;
 import java.text.ParseException;
@@ -14,10 +15,10 @@ import java.util.Calendar;
 public class Utility {
 
     private static final Random random;
-    private static ArraysStack employeeList;
+    /*private static ArraysStack employeeList;
     private static LinkedListStack jobPositionList;
     private static LinkedListStack staffingList;
-
+*/
     //constructor estático, inicializador estático
     static {
         // semilla para el random
@@ -26,6 +27,7 @@ public class Utility {
 
     }
 
+    /*
     public static ArraysStack getEmployeeList() {
         return employeeList;
     }
@@ -49,6 +51,8 @@ public class Utility {
     public static void setStaffingList(LinkedListStack staffingList) {
         Utility.staffingList = staffingList;
     }
+
+     */
 
     // ------------------------------------------------------------- Métodos:
     public static int random(int bound) {
@@ -133,7 +137,7 @@ public class Utility {
         return "Unknown";
     }
 
-    public static int compare(Object a, Object b) throws StackException {
+    public static int compare(Object a, Object b) throws QueueException {
         switch (instanceOf(a, b)) {
             case "Integer":
                 Integer int1 = (Integer) a;
@@ -164,6 +168,27 @@ public class Utility {
         return 2;
     }
 
+    public static String getPlace() {
+
+        String places[] = {"San José", "Ciudad Quesada", "Paraíso",
+                "Turrialba", "Limón", "Liberia", "Puntarenas", "San Ramón", "Puerto Viejo", "Volcán Irazú", "Pérez Zeledón",
+                "Palmares", "Orotina", "El coco", "Ciudad Neilly", "Sixaola", "Guápiles","Siquirres"
+                , "El Guarco", "Cartago", "Santa Bárbara", "Jacó", "Manuel Antonio", "Quepos", "Santa Cruz",
+          "Nicoya"};
+
+        return places[random(places.length-1)];
+    }
+
+    public static String getWeather() {
+
+       String weather[] = {"rainy, thunderstorm, sunny, cloudy, foggy"};
+
+       return weather[random(weather.length)-1];
+    }
+
+
+
+    /*
     public static String infixToPrefixConverter(String exp) throws StackException {
         StringBuilder reversedExp = new StringBuilder(exp).reverse();
         LinkedListStack stack = new LinkedListStack();
@@ -210,8 +235,8 @@ public class Utility {
             char c = exp.charAt(i);
 
             //Validation of invalid characters
-            if (!Character.isLetterOrDigit(c) && "+-*/^ ".indexOf(c) == -1) {
-                return "Invalid expression";
+            if (!Character.isLetterOrDigit(c) && "+-*/ //^ ".indexOf(c) == -1) {
+           /*     return "Invalid expression";
             }
 
             if (Character.isLetterOrDigit(c)) {
@@ -248,10 +273,10 @@ public class Utility {
         for (char c : exp.toCharArray()) {
 
             //Validation of invalid characters
-            if (!Character.isLetterOrDigit(c) && "+-*/^ ".indexOf(c) == -1) {
-                return "Invalid expression";
+//        /*    if (!Character.isLetterOrDigit(c) && "+-*///^ //".indexOf(c) == -1) {
+//                return "Invalid expression";
             }
-
+/*
             if (Character.isLetterOrDigit(c)) {
 
                 stack.push(String.valueOf(c));
@@ -267,6 +292,7 @@ public class Utility {
                 String infixExpression = "(" + ope1 + c + ope2 + ")";
                 stack.push(infixExpression);
             }
+            /*
         }
 
         if (stack.size() != 1) {
@@ -420,5 +446,7 @@ public class Utility {
 
 
     }
+    */
 
-}
+
+
