@@ -13,7 +13,7 @@ public class LinkedQueue implements Queues{
     }
 
     @Override
-    public int size() {
+    public  int size() {
         return counter;
     }
 
@@ -24,7 +24,7 @@ public class LinkedQueue implements Queues{
     }
 
     @Override
-    public boolean isEmpty() {
+    public  boolean isEmpty() {
         return front==null;
     }
 
@@ -50,7 +50,7 @@ public class LinkedQueue implements Queues{
     }
 
     @Override
-    public void enQueue(Object element) throws QueueException {
+    public  void enQueue(Object element) throws QueueException {
         Node newNode = new Node(element);
         if(isEmpty()){ //la cola no existe
             rear = newNode;
@@ -65,7 +65,7 @@ public class LinkedQueue implements Queues{
     }
 
     @Override
-    public Object deQueue() throws QueueException {
+    public  Object deQueue() throws QueueException {
         if(isEmpty())
             throw new QueueException("Linked Queue is Empty");
         Object element = front.data;
@@ -149,4 +149,7 @@ public class LinkedQueue implements Queues{
         }
         return cola.isEmpty(); // Should be empty if all opened are closed
     }
+
+
+
 }

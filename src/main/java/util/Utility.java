@@ -181,7 +181,7 @@ public class Utility {
 
     public static String getWeather() {
 
-       String weather[] = {"rainy, thunderstorm, sunny, cloudy, foggy"};
+       String weather[] = {"rainy ", "thunderstorm", "sunny", "cloudy", "foggy"};
 
        return weather[random(weather.length)-1];
     }
