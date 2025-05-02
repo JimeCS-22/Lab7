@@ -1,4 +1,4 @@
-package Domain;
+package Domain.queue;
 
 public class Climate {
 

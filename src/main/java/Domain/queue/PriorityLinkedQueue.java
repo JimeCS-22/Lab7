@@ -1,4 +1,7 @@
-package Domain;
+package Domain.queue;
+
+
+import Domain.queue.QueueException;
 
 public class PriorityLinkedQueue implements Queues{
 

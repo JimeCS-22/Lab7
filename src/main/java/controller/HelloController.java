@@ -48,11 +48,11 @@ public class HelloController {
 
     @FXML
     public void baseView(ActionEvent actionEvent) throws IOException {
-        load("base.fxml");
+
     }
 
     @FXML
     public void converterView(ActionEvent actionEvent) throws IOException {
-        load("converter.fxml");
+load("weather.fxml");
     }
 }

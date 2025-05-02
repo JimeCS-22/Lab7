@@ -1,8 +1,10 @@
 package Domain;
 
+import Domain.queue.LinkedQueue;
+import Domain.queue.QueueException;
 import org.junit.jupiter.api.Test;
 
-import static Domain.LinkedQueue.isBalanced;
+import static Domain.queue.LinkedQueue.isBalanced;
 
 class LinkedQueuesTest {
 

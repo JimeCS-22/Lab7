@@ -1,12 +1,12 @@
-package Domain;
+package Domain.Stack;
 
-public class Person {
+public class Persona {
 
     private String name;
     private String mood;
     private int attentionTime;//expresado en milesegundos
 
-    public Person(String name, String mood, int attentionTime) {
+    public Persona(String name, String mood, int attentionTime) {
         this.name = name;
         this.mood = mood;
         this.attentionTime = attentionTime;

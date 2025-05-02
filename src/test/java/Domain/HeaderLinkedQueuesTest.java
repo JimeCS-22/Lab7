@@ -1,5 +1,6 @@
 package Domain;
 
+import Domain.queue.*;
 import org.junit.jupiter.api.Test;
 
 class HeaderLinkedQueuesTest {

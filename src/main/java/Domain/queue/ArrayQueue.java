@@ -1,7 +1,9 @@
-package Domain;
+
+package Domain.queue;
+
+import java.util.Arrays;
 
 public class ArrayQueue implements Queues{
-
     //Atributos
     private int n; //el tam max de la cola
     private Object queue[]; //arreglo de objetos
@@ -35,10 +37,9 @@ public class ArrayQueue implements Queues{
     }
 
     @Override
-    public int indexOf(Object element) throws QueueException{
+    public int indexOf(Object element) throws QueueException {
         if(isEmpty())
             throw new QueueException("Array Queue is Empty");
-
         ArrayQueue aux = new ArrayQueue(size());
         int index1=0;
         int index2=-1; //si es -1 no existe

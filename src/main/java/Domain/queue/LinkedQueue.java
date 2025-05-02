@@ -1,4 +1,6 @@
-package Domain;
+package Domain.queue;
+
+
 
 public class LinkedQueue implements Queues{
 
