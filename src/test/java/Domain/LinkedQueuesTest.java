@@ -49,31 +49,33 @@ class LinkedQueuesTest {
         LinkedQueue aux = new LinkedQueue();
 
         while (!linkedQueue.isEmpty()) {
-            Object currentElement = linkedQueue.deQueue();
-            boolean Duplicate = false;
-            int sizeAux = aux.size();
-
-            // Verificar si currentElement ya existe en auxiliaryQueue
-            for (int i = 0; i < sizeAux; i++) {
-                Object auxiliaryElement = aux.deQueue();
-                if (currentElement != null && currentElement.equals(auxiliaryElement)) {
-                    Duplicate = true;
-                } else if (currentElement == null && auxiliaryElement == null) {
-                    Duplicate = true;
+            Object count = linkedQueue.deQueue();
+            boolean isDuplicate = false;
+            
+            LinkedQueue tempQueue = new LinkedQueue();
+            while (!aux.isEmpty()) {
+                Object uniqueElement = aux.deQueue();
+                if (count != null && count.equals(uniqueElement)) {
+                    isDuplicate = true;
+                } else if (count == null && uniqueElement == null) {
+                    isDuplicate = true;
                 }
-                aux.enQueue(auxiliaryElement); // Re-encolar para mantener el contenido
+                tempQueue.enQueue(uniqueElement);
             }
 
-            // Si el elemento no se encontró en auxiliaryQueue, encolarlo
-            if (!Duplicate) {
-                aux.enQueue(currentElement);
+            while (!tempQueue.isEmpty()) {
+                aux.enQueue(tempQueue.deQueue());
+            }
+
+            if (!isDuplicate) {
+                aux.enQueue(count);
             }
         }
 
-        // Volcar los elementos únicos de la cola auxiliar a la cola original
         while (!aux.isEmpty()) {
             linkedQueue.enQueue(aux.deQueue());
         }
+
 
 
     }

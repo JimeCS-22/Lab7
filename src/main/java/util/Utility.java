@@ -186,6 +186,23 @@ public class Utility {
        return weather[random(weather.length)-1];
     }
 
+    public static String getMoods (){
+
+        String moods [] = { "Happiness", "Sadness", "Anger", "Sickness", "Cheerful", "Reflective",
+                "Gloomy", "Romantic", "Calm", "Hopeful", "Fearful", "Tense", "Lonely"};
+
+        return moods[random(moods.length)-1];
+    }
+
+    public static String getNames(){
+
+        String names [] = {"Sofia" , "Mateo" , "Valentina" , "Santiago" , "Isabella" , "Benjamín" , "Camila" ,
+                "Leonardo" , "Antonella " , "Thiago" , "Martina" , "Lucas " , "Emilia " , "Diego" , "Luciana " ,
+                "Joaquín " , "Renata" , "Tomás" , "Zoe" , "Nicolás "};
+
+        return names[random(names.length)-1];
+    }
+
 
 
     /*
